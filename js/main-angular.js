@@ -215,7 +215,6 @@ app.controller("HomeCtrl", function ($scope, $state, $stateParams, $firebaseArra
                         });
                     });
                 })(cotxe);*/
-                //ref.child("cotxes/" + cotxe.$id + "/vehicle").set("Cotxe");
                 $scope.places += Number(cotxe.passatgers) || 0;
                 $scope.placeslliures += (Number(cotxe.lliures) || 0);
 
@@ -278,6 +277,7 @@ app.controller("AddCtrl", function ($scope, $state, $stateParams, $firebaseArray
                         comarca = $scope.comarca || "",
                         provincia = $scope.provincia || "",
                         info = $scope.info || "",
+                        vehicle = "Cotxe",
                         date = Date.now();
 
                     if (!nom) {
@@ -315,7 +315,8 @@ app.controller("AddCtrl", function ($scope, $state, $stateParams, $firebaseArray
                             info: info,
                             date: date,
                             comarca: comarca,
-                            provincia: provincia
+                            provincia: provincia,
+                            vehicle: vehicle
                         }).then(function () {
                             $state.go('ok');
                         });
