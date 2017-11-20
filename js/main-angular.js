@@ -194,6 +194,7 @@ app.controller("HomeCtrl", function ($scope, $state, $stateParams, $firebaseArra
     }
     $scope.places = 0;
     $scope.placeslliures = 0;
+
     $scope.lleida = 0;
     $scope.barcelona = 0;
     $scope.tarragona = 0;
@@ -212,9 +213,8 @@ app.controller("HomeCtrl", function ($scope, $state, $stateParams, $firebaseArra
                              }
                          });
                      });*/
-                    console.log(ct);
                 })(cotxe);
-                ref.child("cotxes/" + cotxe.$id + "/vehicle").set("Cotxe");
+                //ref.child("cotxes/" + cotxe.$id + "/vehicle").set("Cotxe");
                 $scope.places += Number(cotxe.passatgers) || 0;
                 $scope.placeslliures += (Number(cotxe.lliures) || 0);
 
