@@ -96,6 +96,7 @@ app.controller("HomeCtrl", function ($scope, $state, $stateParams, $firebaseArra
     });
     var ref = firebase.database().ref();
     $scope.cotxes = $firebaseArray(ref.child("cotxes"));
+    $scope.dades = $firebaseObject(ref.child("dades/totals"));
     var map;
     var infowindow;
 
@@ -209,42 +210,9 @@ app.controller("HomeCtrl", function ($scope, $state, $stateParams, $firebaseArra
             })();
         });
     }
-    $scope.places = 0;
-    $scope.placeslliures = 0;
-
-    $scope.lleida = 0;
-    $scope.barcelona = 0;
-    $scope.tarragona = 0;
-    $scope.girona = 0;
 
     $scope.cotxes.$loaded().then(function () {
         initMap();
-        $scope.cotxes.forEach(function (cotxe) {
-            setTimeout(function () {
-                //ZONA COMENTADA, EN CAS DE SER NECESSARI S'EXECUTA UNA VEGADA I OMPLA ELS CAMPS COMARCA I PROVINCIA DELS QUE NO LA TENEN DEFINIDA
-                /*(function (ct) {
-                    $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + ct.location.lat + "," + ct.location.lng + "&key=AIzaSyCTCdp2zHmt3pJ3KDzy8VOE2HzIvU7pNaI", function (data) {
-                        data.results.forEach(function (result) {
-                            if (result.types[0] == "administrative_area_level_3") {
-                                ref.child("cotxes/" + ct.$id + "/comarca").set(result.address_components[0].long_name);
-                                ref.child("cotxes/" + ct.$id + "/provincia").set(result.address_components[1].long_name);
-                            }
-                        });
-                    });
-                })(cotxe);*/
-                $scope.places += Number(cotxe.passatgers) || 0;
-                $scope.placeslliures += (Number(cotxe.lliures) || 0);
-
-                $scope.$apply();
-            }, 200);
-        });
-        setTimeout(function () {
-            ref.child("dades/totals").set({
-                cotxes: $scope.cotxes.length,
-                places: $scope.places,
-                placeslliures: $scope.placeslliures
-            });
-        }, 1000);
     });
 });
 
@@ -252,6 +220,7 @@ app.controller("HomeCtrl", function ($scope, $state, $stateParams, $firebaseArra
 app.controller("AddCtrl", function ($scope, $state, $stateParams, $firebaseArray, $firebaseObject) {
     $scope.vehicle = "Cotxe";
     var ref = firebase.database().ref();
+    $scope.cotxes = $firebaseArray(ref.child("cotxes"));
     $(document).ready(function () {
         $('select').material_select();
         $('.datepicker').pickadate();
@@ -336,7 +305,34 @@ app.controller("AddCtrl", function ($scope, $state, $stateParams, $firebaseArray
                             provincia: provincia,
                             vehicle: vehicle
                         }).then(function () {
-                            $state.go('ok');
+                            $scope.places = 0;
+                            $scope.placeslliures = 0;
+                            $scope.cotxes.forEach(function (cotxe) {
+                                setTimeout(function () {
+                                    //ZONA COMENTADA, EN CAS DE SER NECESSARI S'EXECUTA UNA VEGADA I OMPLA ELS CAMPS COMARCA I PROVINCIA DELS QUE NO LA TENEN DEFINIDA
+                                    /*(function (ct) {
+                                        $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + ct.location.lat + "," + ct.location.lng + "&key=AIzaSyCTCdp2zHmt3pJ3KDzy8VOE2HzIvU7pNaI", function (data) {
+                                            data.results.forEach(function (result) {
+                                                if (result.types[0] == "administrative_area_level_3") {
+                                                    ref.child("cotxes/" + ct.$id + "/comarca").set(result.address_components[0].long_name);
+                                                    ref.child("cotxes/" + ct.$id + "/provincia").set(result.address_components[1].long_name);
+                                                }
+                                            });
+                                        });
+                                    })(cotxe);*/
+                                    $scope.places += Number(cotxe.passatgers) || 0;
+                                    $scope.placeslliures += (Number(cotxe.lliures) || 0);
+                                }, 200);
+                            });
+                            setTimeout(function () {
+                                ref.child("dades/totals").set({
+                                    cotxes: $scope.cotxes.length,
+                                    places: $scope.places,
+                                    placeslliures: $scope.placeslliures
+                                }).then(function () {
+                                    $state.go('ok');
+                                });
+                            }, 600);
                         });
                     }
 
