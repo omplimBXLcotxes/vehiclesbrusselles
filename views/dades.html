@@ -1,0 +1,159 @@
+<br>
+<div class="row">
+    <div class="col s12">
+        <a class="btn col s12" ui-sref="home">TORNA A L'INICI</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <div class="card grey lighten-5">
+            <div class="card-content">
+                <h5 style="text-align:center">Tots els vehicles</h5>
+                <div class="col s6 m4 l3">
+                    <div class="counter pro">
+                        <div class="num">{{cotxes.length}}</div>
+                        <div class="label">vehicles</div>
+                    </div>
+                </div>
+                <div class="col s6 m4 l3">
+                    <div class="counter pro">
+                        <div class="num">{{places | number:0}}</div>
+                        <div class="label">places</div>
+                    </div>
+                </div>
+                <div class="col s6 m4 l3">
+                    <div class="counter pro">
+                        <div class="num">{{places - placeslliures | number:0}}</div>
+                        <div class="label">places plenes</div>
+                    </div>
+                </div>
+                <div class="col s6 m4 l3">
+                    <div class="counter pro">
+                        <div class="num">{{placeslliures | number:0}}</div>
+                        <div class="label">places lliures</div>
+                    </div>
+                </div>
+                <div class="col s6 m4 l3">
+                    <div class="counter pro">
+                        <div class="num">{{places/cotxes.length | number:2}}</div>
+                        <div class="label">places per vehicle</div>
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col s12">
+        <div class="card grey lighten-5">
+            <div class="card-content">
+                <h5 style="text-align:center">Cotxes</h5>
+                <div class="col s6 m4 l3">
+                    <div class="counter pro">
+                        <div class="num">{{num_cotxes}}</div>
+                        <div class="label">cotxes</div>
+                    </div>
+                </div>
+                <div class="col s6 m4 l3">
+                    <div class="counter pro">
+                        <div class="num">{{cotxe_places | number:0}}</div>
+                        <div class="label">places</div>
+                    </div>
+                </div>
+                <div class="col s6 m4 l3">
+                    <div class="counter pro">
+                        <div class="num">{{cotxe_places - cotxe_placeslliures | number:0}}</div>
+                        <div class="label">places plenes</div>
+                    </div>
+                </div>
+                <div class="col s6 m4 l3">
+                    <div class="counter pro">
+                        <div class="num">{{cotxe_placeslliures | number:0}}</div>
+                        <div class="label">places lliures</div>
+                    </div>
+                </div>
+                <div class="col s6 m4 l3">
+                    <div class="counter pro">
+                        <div class="num">{{cotxe_places/num_cotxes | number:2}}</div>
+                        <div class="label">places per cotxe</div>
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col s12">
+        <div class="card grey lighten-5">
+            <div class="card-content">
+                <h5 style="text-align:center">Motos</h5>
+                <div class="col s6 m4 l3">
+                    <div class="counter pro">
+                        <div class="num">{{num_motos}}</div>
+                        <div class="label">motos</div>
+                    </div>
+                </div>
+                <div class="col s6 m4 l3">
+                    <div class="counter pro">
+                        <div class="num">{{moto_places | number:0}}</div>
+                        <div class="label">places</div>
+                    </div>
+                </div>
+                <div class="col s6 m4 l3">
+                    <div class="counter pro">
+                        <div class="num">{{moto_places - moto_placeslliures | number:0}}</div>
+                        <div class="label">places plenes</div>
+                    </div>
+                </div>
+                <div class="col s6 m4 l3">
+                    <div class="counter pro">
+                        <div class="num">{{moto_placeslliures | number:0}}</div>
+                        <div class="label">places lliures</div>
+                    </div>
+                </div>
+                <div class="col s6 m4 l3">
+                    <div class="counter pro">
+                        <div class="num">{{moto_places/num_motos | number:2}}</div>
+                        <div class="label">places per moto</div>
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col s12">
+        <div class="card grey lighten-5">
+            <div class="card-content">
+                <h5 style="text-align:center">Caravanes</h5>
+                <div class="col s6 m4 l3">
+                    <div class="counter pro">
+                        <div class="num">{{num_caravanes}}</div>
+                        <div class="label">caravanes</div>
+                    </div>
+                </div>
+                <div class="col s6 m4 l3">
+                    <div class="counter pro">
+                        <div class="num">{{caravana_places | number:0}}</div>
+                        <div class="label">places</div>
+                    </div>
+                </div>
+                <div class="col s6 m4 l3">
+                    <div class="counter pro">
+                        <div class="num">{{caravana_places - caravana_placeslliures | number:0}}</div>
+                        <div class="label">places plenes</div>
+                    </div>
+                </div>
+                <div class="col s6 m4 l3">
+                    <div class="counter pro">
+                        <div class="num">{{caravana_placeslliures | number:0}}</div>
+                        <div class="label">places lliures</div>
+                    </div>
+                </div>
+                <div class="col s6 m4 l3">
+                    <div class="counter pro">
+                        <div class="num">{{caravana_places/num_caravanes | number:2}}</div>
+                        <div class="label">places per caravanes</div>
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+    </div>
