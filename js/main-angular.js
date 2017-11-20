@@ -204,16 +204,17 @@ app.controller("HomeCtrl", function ($scope, $state, $stateParams, $firebaseArra
         initMap();
         $scope.cotxes.forEach(function (cotxe) {
             setTimeout(function () {
-                (function (ct) {
-                    /* $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + ct.location.lat + "," + ct.location.lng + "&key=AIzaSyCTCdp2zHmt3pJ3KDzy8VOE2HzIvU7pNaI", function (data) {
-                         data.results.forEach(function (result) {
-                             if (result.types[0] == "administrative_area_level_3") {
-                                 ref.child("cotxes/" + ct.$id + "/comarca").set(result.address_components[0].long_name);
-                                 ref.child("cotxes/" + ct.$id + "/provincia").set(result.address_components[1].long_name);
-                             }
-                         });
-                     });*/
-                })(cotxe);
+                //ZONA COMENTADA, EN CAS DE SER NECESSARI S'EXECUTA UNA VEGADA I OMPLA ELS CAMPS COMARCA I PROVINCIA DELS QUE NO LA TENEN DEFINIDA
+                /*(function (ct) {
+                    $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + ct.location.lat + "," + ct.location.lng + "&key=AIzaSyCTCdp2zHmt3pJ3KDzy8VOE2HzIvU7pNaI", function (data) {
+                        data.results.forEach(function (result) {
+                            if (result.types[0] == "administrative_area_level_3") {
+                                ref.child("cotxes/" + ct.$id + "/comarca").set(result.address_components[0].long_name);
+                                ref.child("cotxes/" + ct.$id + "/provincia").set(result.address_components[1].long_name);
+                            }
+                        });
+                    });
+                })(cotxe);*/
                 //ref.child("cotxes/" + cotxe.$id + "/vehicle").set("Cotxe");
                 $scope.places += Number(cotxe.passatgers) || 0;
                 $scope.placeslliures += (Number(cotxe.lliures) || 0);
@@ -274,6 +275,8 @@ app.controller("AddCtrl", function ($scope, $state, $stateParams, $firebaseArray
                         htornada = $scope.htornada,
                         ubicacio = $scope.ubicacio,
                         location = $scope.location || "",
+                        comarca = $scope.comarca || "",
+                        provincia = $scope.provincia || "",
                         info = $scope.info || "",
                         date = Date.now();
 
@@ -310,7 +313,9 @@ app.controller("AddCtrl", function ($scope, $state, $stateParams, $firebaseArray
                             ubicacio: ubicacio,
                             location: location,
                             info: info,
-                            date: date
+                            date: date,
+                            comarca: comarca,
+                            provincia: provincia
                         }).then(function () {
                             $state.go('ok');
                         });
@@ -361,6 +366,9 @@ app.controller("AddCtrl", function ($scope, $state, $stateParams, $firebaseArray
             // For each place, get the icon, name and location.
             var bounds = new google.maps.LatLngBounds();
             var place = places[0];
+
+            console.log(place);
+
             if (!place.geometry) {
                 console.log("Returned place contains no geometry");
                 return;
@@ -373,8 +381,21 @@ app.controller("AddCtrl", function ($scope, $state, $stateParams, $firebaseArray
                 position: place.geometry.location
             }));
 
+            //obtenim lat i lng
             var lat = place.geometry.location.lat();
             var lng = place.geometry.location.lng();
+
+            //BUSQUEM COMARCA I PROVINCIA
+            (function () {
+                $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&key=AIzaSyCTCdp2zHmt3pJ3KDzy8VOE2HzIvU7pNaI", function (data) {
+                    data.results.forEach(function (result) {
+                        if (result.types[0] == "administrative_area_level_3") {
+                            $scope.comarca = (result.address_components[0].long_name);
+                            $scope.provincia = (result.address_components[1].long_name);
+                        }
+                    });
+                });
+            })();
 
             $scope.location = {
                 lat: lat,
