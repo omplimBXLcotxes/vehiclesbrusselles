@@ -6,10 +6,19 @@
         <p class="col s12 l6 offset-l3">Omple el següent formulari i publicaràs el teu vehicle.<br>En cas que et quedin places disponibles, la gent es podrà posar en contacte amb tu</p>
     </div>
     <div class="row">
-        <div class="input-field col s6 offset-l3">
+        <div class="input-field col s6 l3 offset-l3">
             <i class="material-icons prefix">account_circle</i>
             <input id="nom" type="text" ng-model="nom" required class="validate">
             <label for="nom">El teu nom</label>
+        </div>
+        <div class="input-field col s6 l3">
+            <i class="material-icons prefix">directions_car</i>
+            <select ng-model="vehicle">
+              <option value="Cotxe" selected>Cotxe</option>
+              <option value="Moto">Moto</option>
+              <option value="Caravana">Caravana</option>
+            </select>
+            <label>Tipus de vehicle</label>
         </div>
     </div>
     <div class="row">

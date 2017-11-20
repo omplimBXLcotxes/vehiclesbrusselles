@@ -12,6 +12,16 @@
 </div>
 <div class="row">
     <div class="input-field col s12 m6 l2">
+        <i class="material-icons prefix">directions_car</i>
+        <select ng-model="filtre_vehicle">
+      <option value="tot" selected>Tots</option>
+      <option value="Cotxe">Cotxe</option>
+      <option value="Moto">Moto</option>
+      <option value="Caravana">Caravana</option>
+    </select>
+        <label>Tipus de vehicle</label>
+    </div>
+    <div class="input-field col s12 m6 l2">
         <i class="material-icons prefix">today</i>
         <input class="datepicker" id="anada" type="text" ng-model="dataminim">
         <label for="anada">Data d'anada</label>
@@ -21,20 +31,20 @@
         <input class="datepicker" id="tornada" type="text" ng-model="datamaxim">
         <label for="tornada">Data de tornada</label>
     </div>
-    <div class="input-field col s12 m4 l3">
+    <div class="input-field col s12 m4 l2">
         <i class="material-icons prefix">person_outline</i>
         <input id="min" type="number" ng-model="minim_places">
-        <label for="min">Mínim de places lliures</label>
+        <label for="min">Mínim places lliures</label>
+    </div>
+    <div class="input-field col s12 m4 l2">
+        <i class="material-icons prefix">search</i>
+        <input id="cerca" type="text" ng-model="cerca">
+        <label for="cerca">Busca...</label>
     </div>
     <div class="col s12 m4 l2">
         <br>
         <input id="mplens" class="filled-in" type="checkbox" ng-model="mostrarplens">
-        <label for="mplens">Mostrar cotxes plens</label>
-    </div>
-    <div class="input-field col s12 m4 l3">
-        <i class="material-icons prefix">search</i>
-        <input id="cerca" type="text" ng-model="cerca">
-        <label for="cerca">Busca...</label>
+        <label for="mplens">Mostrar vehicles plens</label>
     </div>
     <div class="column">
         <div class="col s12 m6 l4">
@@ -64,10 +74,11 @@
             </div>
         </div>
     </div>
-    <div class="col s12 m6 l4" ng-repeat="cotxe in cotxes | filter:cerca | filter:minim | filter:datamin | filter:datamax | filter:mostrarPlens">
+    <div class="col s12 m6 l4" ng-repeat="cotxe in cotxes | filter:cerca | filter:minim | filter:datamin | filter:datamax | filter:mostrarPlens | filter:filtrevehicle">
         <div class="card grey lighten-5">
             <div class="card-content">
                 <h1 class="card-title">{{cotxe.nom}} <b class="smaller" ng-if="cotxe.lliures">- {{cotxe.lliures}} places lliures<b ng-if="cotxe.preu">, {{cotxe.preu}}€/persona</b></b></h1>
+                <p><i ng-if="cotxe.vehicle=='Cotxe'" class="material-icons">directions_car</i><i ng-if="cotxe.vehicle=='Moto'" class="material-icons">motorcycle</i><i ng-if="cotxe.vehicle=='Caravana'" class="material-icons">directions_bus</i> {{cotxe.vehicle}}</p>
                 <p><i class="material-icons">person</i> {{cotxe.passatgers}} persones <b ng-if="cotxe.lliures">({{cotxe.lliures}} places lliures)</b></p>
                 <p><i class="material-icons">location_on</i> {{cotxe.ubicacio}}</p>
                 <p><i class="material-icons">today</i> Sortida: {{cotxe.anada}} a les {{cotxe.hanada}}</p>
@@ -77,8 +88,6 @@
                 </p>
             </div>
             <div class="card-action">
-                <!--<a class="btn" href="mailto:{{cotxe.email}}" ng-if="cotxe.email">ENVIAR UN CORREU</a>
-                <a class="btn" href="tel:{{cotxe.telefon}}" ng-if="cotxe.telefon">TRUCAR</a>-->
                 <a class="btn" ui-sref="contactar({id: cotxe.$id})" ng-if="cotxe.lliures">CONTACTAR</a>
                 <a class="btn" ui-sref="editar({id: cotxe.$id})" ng-if="user_id && ((user_id==cotxe.id)||(user_id=='ucCScs6GWKXvTT7O6cirDt1K0QM2')||(user_id=='txA396QdGdXVK7rnT0L4PmPrMi12'))">EDITAR</a>
                 <a class="btn" ng-click="eliminar(cotxe.$id, cotxe.id)" ng-if="user_id && ((user_id==cotxe.id)||(user_id=='ucCScs6GWKXvTT7O6cirDt1K0QM2')||(user_id=='txA396QdGdXVK7rnT0L4PmPrMi12'))" style="background-color:#ff5252">ELIMINAR</a>

@@ -134,6 +134,18 @@ app.controller("HomeCtrl", function ($scope, $state, $stateParams, $firebaseArra
             return cotxe.lliures > 0;
         }
     }
+    $scope.filtre_vehicle = "tot";
+    $scope.filtrevehicle = function (cotxe) {
+        if ($scope.filtre_vehicle == "Cotxe") {
+            return cotxe.vehicle == "Cotxe";
+        } else if ($scope.filtre_vehicle == "Moto") {
+            return cotxe.vehicle == "Moto";
+        } else if ($scope.filtre_vehicle == "Caravana") {
+            return cotxe.vehicle == "Caravana";
+        } else {
+            return true;
+        }
+    }
 
     $scope.eliminar = function (idcotxe, idpersona) {
         if (confirm("Segur que vols eliminar la publicació?")) {
@@ -233,6 +245,7 @@ app.controller("HomeCtrl", function ($scope, $state, $stateParams, $firebaseArra
 
 
 app.controller("AddCtrl", function ($scope, $state, $stateParams, $firebaseArray, $firebaseObject) {
+    $scope.vehicle = "Cotxe";
     var ref = firebase.database().ref();
     $(document).ready(function () {
         $('select').material_select();
@@ -277,7 +290,7 @@ app.controller("AddCtrl", function ($scope, $state, $stateParams, $firebaseArray
                         comarca = $scope.comarca || "",
                         provincia = $scope.provincia || "",
                         info = $scope.info || "",
-                        vehicle = "Cotxe",
+                        vehicle = $scope.vehicle,
                         date = Date.now();
 
                     if (!nom) {
