@@ -1,0 +1,90 @@
+<br>
+<div class="row">
+    <div class="col s12" ng-if="user">
+        <label class="col" style="font-size:20px;" style="margin-bottom:12px;">Registrat com a {{user.email}}</label>
+        <a class="btn col s12 m3 offset-m1 offset-l1" ng-click="tanca()" style="margin-bottom:8px;">TANCA LA SESSIÓ</a>
+        <br><br>
+    </div>
+    <div class="col s12">
+        <a class="btn col s12 m7 l8" ui-sref="afegir" style="margin-bottom:8px;">VENS AMB COTXE? PUBLICA'L!</a>
+        <a class="btn col s12 m4 l3 offset-m1 offset-l1" ui-sref="editartot">EDITA LA MEVA PUBLICACIÓ</a>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s12 m6 l2">
+        <i class="material-icons prefix">today</i>
+        <input class="datepicker" id="anada" type="text" ng-model="dataminim">
+        <label for="anada">Data d'anada</label>
+    </div>
+    <div class="input-field col s12 m6 l2">
+        <i class="material-icons prefix">today</i>
+        <input class="datepicker" id="tornada" type="text" ng-model="datamaxim">
+        <label for="tornada">Data de tornada</label>
+    </div>
+    <div class="input-field col s12 m4 l3">
+        <i class="material-icons prefix">person_outline</i>
+        <input id="min" type="number" ng-model="minim_places">
+        <label for="min">Mínim de places lliures</label>
+    </div>
+    <div class="col s12 m4 l2">
+        <br>
+        <input id="mplens" class="filled-in" type="checkbox" ng-model="mostrarplens">
+        <label for="mplens">Mostrar cotxes plens</label>
+    </div>
+    <div class="input-field col s12 m4 l3">
+        <i class="material-icons prefix">search</i>
+        <input id="cerca" type="text" ng-model="cerca">
+        <label for="cerca">Busca...</label>
+    </div>
+    <div class="column">
+        <div class="col s12 m6 l4">
+            <div class="card grey lighten-5">
+                <div class="card-content" id="no-padding">
+                    <div class="counter">
+                        <div class="num">{{cotxes.length}}</div>
+                        <div class="label">cotxes</div>
+                    </div>
+                    <div class="counter">
+                        <div class="num">{{places | number:0}}</div>
+                        <div class="label">places</div>
+                    </div>
+                    <div class="counter">
+                        <div class="num">{{placeslliures | number:0}}</div>
+                        <div class="label">places lliures</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card grey lighten-5">
+                <div class="card-content" id="no-padding">
+                    <div id="mapa" style="height:270px;"></div>
+                </div>
+                <div class="card-action">
+                    <a class="btn" ui-sref="mapa">Veure mapa més gran.</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m6 l4" ng-repeat="cotxe in cotxes | filter:cerca | filter:minim | filter:datamin | filter:datamax | filter:mostrarPlens">
+        <div class="card grey lighten-5">
+            <div class="card-content">
+                <h1 class="card-title">{{cotxe.nom}} <b class="smaller" ng-if="cotxe.lliures">- {{cotxe.lliures}} places lliures<b ng-if="cotxe.preu">, {{cotxe.preu}}€/persona</b></b></h1>
+                <p><i class="material-icons">person</i> {{cotxe.passatgers}} persones <b ng-if="cotxe.lliures">({{cotxe.lliures}} places lliures)</b></p>
+                <p><i class="material-icons">location_on</i> {{cotxe.ubicacio}}</p>
+                <p><i class="material-icons">today</i> Sortida: {{cotxe.anada}} a les {{cotxe.hanada}}</p>
+                <p><i class="material-icons">today</i>Tornada: {{cotxe.tornada}} a les {{cotxe.htornada}}</p>
+                <br>
+                <p>{{cotxe.info}}
+                </p>
+            </div>
+            <div class="card-action">
+                <!--<a class="btn" href="mailto:{{cotxe.email}}" ng-if="cotxe.email">ENVIAR UN CORREU</a>
+                <a class="btn" href="tel:{{cotxe.telefon}}" ng-if="cotxe.telefon">TRUCAR</a>-->
+                <a class="btn" ui-sref="contactar({id: cotxe.$id})" ng-if="cotxe.lliures">CONTACTAR</a>
+                <a class="btn" ui-sref="editar({id: cotxe.$id})" ng-if="user_id && ((user_id==cotxe.id)||(user_id=='ucCScs6GWKXvTT7O6cirDt1K0QM2')||(user_id=='txA396QdGdXVK7rnT0L4PmPrMi12'))">EDITAR</a>
+                <a class="btn" ng-click="eliminar(cotxe.$id, cotxe.id)" ng-if="user_id && ((user_id==cotxe.id)||(user_id=='ucCScs6GWKXvTT7O6cirDt1K0QM2')||(user_id=='txA396QdGdXVK7rnT0L4PmPrMi12'))" style="background-color:#ff5252">ELIMINAR</a>
+                <a class="btn disabled" ui-sref="contactar({id: cotxe.$id})" ng-if="!cotxe.lliures">COTXE PLE</a>
+                <p am-time-ago="cotxe.date" style="position: absolute;right: 20px;top: 10px;color:grey;"></p>
+            </div>
+        </div>
+    </div>
+</div>

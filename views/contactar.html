@@ -1,0 +1,79 @@
+<div class="row">
+    <br>
+    <div class="col s12 m5">
+        <div class="card grey lighten-5">
+            <div class="card-content">
+                <h1 class="card-title">{{cotxe.nom}} <b class="smaller" ng-if="cotxe.lliures">- {{cotxe.lliures}} places lliures, <b>{{cotxe.preu}}€/persona</b></b></h1>
+                <p><i class="material-icons">person</i> {{cotxe.passatgers}} persones <b ng-if="cotxe.lliures">({{cotxe.lliures}} places lliures)</b></p>
+                <p><i class="material-icons">location_on</i> {{cotxe.ubicacio}}</p>
+                <p><i class="material-icons">today</i> {{cotxe.anada}} - {{cotxe.tornada}}</p>
+                <br>
+                <p>{{cotxe.info}}
+                </p>
+            </div>
+        </div>
+        <div class="card grey lighten-5">
+            <div id="map" style="width:100%;height:290px"></div>
+        </div>
+    </div>
+    <div class="col s12 m7" ng-hide="carregant">
+        <div class="card grey lighten-5">
+            <div class="card-content row">
+                <div class="input-field col s12 m6">
+                    <i class="material-icons prefix">email</i>
+                    <input id="mail" type="email" ng-model="memail" disabled>
+                </div>
+                <div class="input-field col s12 m6">
+                    <i class="material-icons prefix">phone</i>
+                    <input id="tel" type="tel" ng-model="mtelefon">
+                    <label for="tel">Telèfon</label>
+                </div>
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">message</i>
+                    <textarea id="msgs" class="materialize-textarea" ng-model="msg" style="height:150px;"></textarea>
+                    <label for="msgs">Missatge...</label>
+                </div>
+            </div>
+            <div class="card-action row">
+                <a class="btn col s12 m6 offset-m3" ng-click="missatge()">ENVIAR MISSATGE</a>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m7" ng-if="carregant">
+        <div class="card grey lighten-5">
+            <div class="card-content row">
+                <br>
+                <h3 class="col s12" style="text-align:center;">S'està enviant...</h3>
+            </div>
+            <div class="card-action row">
+                <a class="btn col s12 m6 offset-m3 disabled" ng-click="missatge()">ENVIAR MISSATGE</a>
+            </div>
+        </div>
+    </div>
+    <p class="col s12 m7" style="color:grey;" ng-if="cotxe.date">Publicat <span am-time-ago="cotxe.date"></span></p>
+    <a class="btn" ui-sref="editar({id: cotxe.$id})" ng-if="user && ((user.uid==cotxe.id)||(user.uid=='ucCScs6GWKXvTT7O6cirDt1K0QM2')||(user.uid=='txA396QdGdXVK7rnT0L4PmPrMi12'))">EDITAR</a>
+    <a class="btn" ng-click="eliminar(cotxe.$id)" ng-if="user && ((user.uid==cotxe.id)||(user.uid=='ucCScs6GWKXvTT7O6cirDt1K0QM2')||(user.uid=='txA396QdGdXVK7rnT0L4PmPrMi12'))" style="background-color:#ff5252">ELIMINAR</a>
+</div>
+
+
+<style>
+    .missatge {
+        background-color: #26a69a;
+        color: white;
+        float: left;
+        padding: 10px 50px;
+        border-radius: 16px;
+        border-bottom-left-radius: 2px;
+        max-width: 80%;
+        margin-bottom: 18px;
+        clear: both;
+    }
+    
+    .missatge.me {
+        float: right;
+        background-color: orange;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 2px;
+    }
+
+</style>

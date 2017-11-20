@@ -1,0 +1,30 @@
+<br>
+<div class="row">
+    <div class="col s12">
+        <h2>Aquestes són les teves publicacions</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 m6 l4" ng-repeat="cotxe in cotxes" ng-if="cotxe.id==user.uid">
+        <div class="card grey lighten-5">
+            <div class="card-content">
+                <h1 class="card-title">{{cotxe.nom}} <b class="smaller" ng-if="cotxe.lliures">- {{cotxe.lliures}} places lliures<b ng-if="cotxe.preu">, {{cotxe.preu}}€/persona</b></b></h1>
+                <p><i class="material-icons">person</i> {{cotxe.passatgers}} persones <b ng-if="cotxe.lliures">({{cotxe.lliures}} places lliures)</b></p>
+                <p><i class="material-icons">location_on</i> {{cotxe.ubicacio}}</p>
+                <p><i class="material-icons">today</i> Sortida: {{cotxe.anada}} a les {{cotxe.hanada}}</p>
+                <p><i class="material-icons">today</i>Tornada: {{cotxe.tornada}} a les {{cotxe.htornada}}</p>
+                <br>
+                <p>{{cotxe.info}}
+                </p>
+            </div>
+            <div class="card-action">
+                <a class="btn" ui-sref="editar({id: cotxe.$id})">EDITAR</a>
+                <a class="btn" ng-click="eliminar(cotxe.$id)" style="background-color:#ff5252">ELIMINAR</a>
+                <p am-time-ago="cotxe.date" style="position: absolute;right: 20px;top: 10px;color:grey;"></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row"><br><br><br>
+    <a class="btn" ui-sref="home">TORNAR A L'INICI</a>
+</div>

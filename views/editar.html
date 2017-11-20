@@ -1,0 +1,90 @@
+<div class="content">
+    <div class="row">
+        <h3 class="col s12 l6 offset-l3">Editar publicació</h3>
+    </div>
+    <div class="row">
+        <p class="col s12 l6 offset-l3">Edita la teva publicació.</p>
+    </div>
+    <div class="row">
+        <div class="input-field col s6 offset-l3">
+            <i class="material-icons prefix">account_circle</i>
+            <input id="nom" type="text" ng-model="cotxe.nom">
+            <label for="nom">El teu nom</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6 l3 offset-l3">
+            <i class="material-icons prefix">person</i>
+            <input id="passatgers" type="number" ng-model="cotxe.passatgers">
+            <label for="passatgers">Número total de passatgers</label>
+        </div>
+        <div class="input-field col s6 l3">
+            <i class="material-icons prefix">person</i>
+            <input id="lliures" type="number" ng-model="cotxe.lliures">
+            <label for="lliures">Número de places lliures</label>
+        </div>
+        <div class="input-field col s6 l3" ng-show="cotxe.lliures>0">
+            <i class="material-icons prefix">euro_symbol</i>
+            <input id="preu" type="number" ng-model="cotxe.preu">
+            <label for="preu">Preu per passatger (€)</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6 l3 offset-l3">
+            <i class="material-icons prefix">today</i>
+            <input class="datepicker" id="anada" type="text" ng-model="cotxe.anada">
+            <label for="anada">Data d'anada</label>
+        </div>
+        <div class="input-field col s6 l3">
+            <i class="material-icons prefix">today</i>
+            <input class="datepicker" id="tornada" type="text" ng-model="cotxe.tornada">
+            <label for="tornada">Data de tornada</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6 l3 offset-l3">
+            <i class="material-icons prefix">access_time</i>
+            <input id="htornada" type="text" ng-model="cotxe.hanada">
+            <label for="htornada">Hora d'anada</label>
+        </div>
+
+        <div class="input-field col s6 l3">
+            <i class="material-icons prefix">access_time</i>
+            <input id="htornada" type="text" ng-model="cotxe.htornada">
+            <label for="htornada">Hora de tornada</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6 l3 offset-l3">
+            <i class="material-icons prefix">location_on</i>
+            <input id="pac-input" type="text" placeholder="Ubicació de sortida..." ng-model="cotxe.ubicacio">
+        </div>
+        <div id="map" class="col s6 l3" style="height:200px;"></div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12 l6 offset-l3">
+            <i class="material-icons prefix">info</i>
+            <textarea id="textarea1" class="materialize-textarea" ng-model="cotxe.info"></textarea>
+            <label for="textarea1">Informació addicional...</label>
+        </div>
+    </div>
+    <!--<div class="row">
+        <div class="input-field col s6 l3 offset-l3">
+            <i class="material-icons prefix">email</i>
+            <input id="email" type="email" ng-model="email">
+            <label for="email">Correu electònic</label>
+        </div>
+        <div class="input-field col s6 l3">
+            <i class="material-icons prefix">phone</i>
+            <input id="tel" type="tel" ng-model="telefon">
+            <label for="tel">Número de telèfon</label>
+        </div>
+    </div>-->
+    <div class="row">
+        <br>
+        <a class="btn col s6 offset-s3" ng-click="guarda()">GUARDAR</a>
+        <br><br>
+        <a class="btn col s6 offset-s3" ng-click="eliminar(cotxe.$id)" style="background-color:#ff5252">ELIMINA LA PUBLICACIÓ</a>
+        <br><br>
+    </div>
+</div>

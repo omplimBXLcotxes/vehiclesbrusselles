@@ -1,0 +1,92 @@
+<div class="content">
+    <div class="row">
+        <h3 class="col s12 l6 offset-l3">Afegeix el teu cotxe</h3>
+    </div>
+    <div class="row">
+        <p class="col s12 l6 offset-l3">Omple el següent formulari i publicaràs el teu vehicle.<br>En cas que et quedin places disponibles, la gent es podrà posar en contacte amb tu</p>
+    </div>
+    <div class="row">
+        <div class="input-field col s6 offset-l3">
+            <i class="material-icons prefix">account_circle</i>
+            <input id="nom" type="text" ng-model="nom" required class="validate">
+            <label for="nom">El teu nom</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6 l3 offset-l3">
+            <i class="material-icons prefix">person</i>
+            <input id="passatgers" type="number" ng-model="passatgers">
+            <label for="passatgers">Número total de passatgers</label>
+        </div>
+        <div class="input-field col s6 l3">
+            <i class="material-icons prefix">person</i>
+            <input id="lliures" type="number" ng-model="lliures">
+            <label for="lliures">Número de places lliures</label>
+        </div>
+        <div class="input-field col s6 l3" ng-show="lliures>0">
+            <i class="material-icons prefix">euro_symbol</i>
+            <input id="preu" type="number" ng-model="preu">
+            <label for="preu">Preu per passatger (€)</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6 l3 offset-l3">
+            <i class="material-icons prefix">today</i>
+            <input class="datepicker" id="anada" type="text" ng-model="anada">
+            <label for="anada">Data d'anada</label>
+        </div>
+        <div class="input-field col s6 l3">
+            <i class="material-icons prefix">today</i>
+            <input class="datepicker" id="tornada" type="text" ng-model="tornada">
+            <label for="tornada">Data de tornada</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6 l3 offset-l3">
+            <i class="material-icons prefix">access_time</i>
+            <input id="hanada" type="text" ng-model="hanada">
+            <label for="hanada">Hora d'anada</label>
+        </div>
+
+        <div class="input-field col s6 l3">
+            <i class="material-icons prefix">access_time</i>
+            <input id="htornada" type="text" ng-model="htornada">
+            <label for="htornada">Hora de tornada</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6 l3 offset-l3">
+            <i class="material-icons prefix">location_on</i>
+            <input id="pac-input" type="text" placeholder="Ubicació de sortida..." ng-model="ubicacio">
+        </div>
+        <div id="map" class="col s6 l3" style="height:200px;"></div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12 l6 offset-l3">
+            <i class="material-icons prefix">info</i>
+            <textarea id="textarea1" class="materialize-textarea" ng-model="info"></textarea>
+            <label for="textarea1">Informació addicional...</label>
+        </div>
+    </div>
+    <!--<div class="row">
+        <div class="input-field col s6 l3 offset-l3">
+            <i class="material-icons prefix">email</i>
+            <input id="email" type="email" ng-model="email">
+            <label for="email">Correu electònic</label>
+        </div>
+        <div class="input-field col s6 l3">
+            <i class="material-icons prefix">phone</i>
+            <input id="tel" type="tel" ng-model="telefon">
+            <label for="tel">Número de telèfon</label>
+        </div>
+    </div>-->
+    <div class="row" ng-hide="!usuari">
+        <br>
+        <a class="btn col s6 offset-s3" ng-click="publica()">PUBLICA'L!</a>
+        <br><br>
+        <p style="color:grey;text-align:center;">Problemes publicant?<br>Escriu-nos a
+            <a href="mailto:vehiclesbrusselles@gmail.com">vehiclesbrusselles@gmail.com</a> i t'ajudarem!
+        </p>
+    </div>
+</div>
+<!----><a ng-click="tanca()" style="color:transparent;">Tancar la sessió</a>
