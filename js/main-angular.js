@@ -515,6 +515,18 @@ app.controller("EditarCtrl", function ($scope, $state, $stateParams, $firebaseAr
                     var lat = place.geometry.location.lat();
                     var lng = place.geometry.location.lng();
 
+                    //BUSQUEM COMARCA I PROVINCIA
+                    (function () {
+                        $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&key=AIzaSyCTCdp2zHmt3pJ3KDzy8VOE2HzIvU7pNaI", function (data) {
+                            data.results.forEach(function (result) {
+                                if (result.types[0] == "administrative_area_level_3") {
+                                    $scope.cotxe.comarca = (result.address_components[0].long_name);
+                                    $scope.cotxe.provincia = (result.address_components[1].long_name);
+                                }
+                            });
+                        });
+                    })();
+
                     $scope.cotxe.location = {
                         lat: lat,
                         lng: lng
@@ -553,6 +565,8 @@ app.controller("EditarCtrl", function ($scope, $state, $stateParams, $firebaseAr
                 refnova.child("htornada").set($scope.cotxe.htornada);
                 refnova.child("ubicacio").set($scope.cotxe.ubicacio);
                 refnova.child("location").set($scope.cotxe.location);
+                refnova.child("comarca").set($scope.cotxe.comarca);
+                refnova.child("provincia").set($scope.cotxe.provincia);
                 refnova.child("info").set($scope.cotxe.info);
                 $state.go("ok");
             }
