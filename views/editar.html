@@ -8,19 +8,19 @@
     <div class="row">
         <div class="input-field col s6 offset-l3">
             <i class="material-icons prefix">account_circle</i>
-            <input id="nom" type="text" ng-model="cotxe.nom">
+            <input id="nom" type="text" ng-model="cotxe.nom" requierd>
             <label for="nom">El teu nom</label>
         </div>
     </div>
     <div class="row">
         <div class="input-field col s6 l3 offset-l3">
             <i class="material-icons prefix">person</i>
-            <input id="passatgers" type="number" ng-model="cotxe.passatgers">
+            <input id="passatgers" type="number" ng-model="cotxe.passatgers" required>
             <label for="passatgers">Número total de passatgers</label>
         </div>
         <div class="input-field col s6 l3">
             <i class="material-icons prefix">person</i>
-            <input id="lliures" type="number" ng-model="cotxe.lliures">
+            <input id="lliures" type="number" ng-model="cotxe.lliures" placeholder="0" required>
             <label for="lliures">Número de places lliures</label>
         </div>
         <div class="input-field col s6 l3" ng-show="cotxe.lliures>0">
@@ -32,32 +32,32 @@
     <div class="row">
         <div class="input-field col s6 l3 offset-l3">
             <i class="material-icons prefix">today</i>
-            <input class="datepicker" id="anada" type="text" ng-model="cotxe.anada">
+            <input class="datepicker" id="anada" type="text" ng-model="cotxe.anada" required>
             <label for="anada">Data d'anada</label>
         </div>
         <div class="input-field col s6 l3">
             <i class="material-icons prefix">today</i>
-            <input class="datepicker" id="tornada" type="text" ng-model="cotxe.tornada">
+            <input class="datepicker" id="tornada" type="text" ng-model="cotxe.tornada" required>
             <label for="tornada">Data de tornada</label>
         </div>
     </div>
     <div class="row">
         <div class="input-field col s6 l3 offset-l3">
             <i class="material-icons prefix">access_time</i>
-            <input id="htornada" type="text" ng-model="cotxe.hanada">
+            <input id="htornada" type="text" ng-model="cotxe.hanada" required>
             <label for="htornada">Hora d'anada</label>
         </div>
 
         <div class="input-field col s6 l3">
             <i class="material-icons prefix">access_time</i>
-            <input id="htornada" type="text" ng-model="cotxe.htornada">
+            <input id="htornada" type="text" ng-model="cotxe.htornada" required>
             <label for="htornada">Hora de tornada</label>
         </div>
     </div>
     <div class="row">
         <div class="input-field col s6 l3 offset-l3">
             <i class="material-icons prefix">location_on</i>
-            <input id="pac-input" type="text" placeholder="Ubicació de sortida..." ng-model="cotxe.ubicacio">
+            <input id="pac-input" type="text" placeholder="Ubicació de sortida..." ng-model="cotxe.ubicacio" required>
         </div>
         <div id="map" class="col s6 l3" style="height:200px;"></div>
     </div>
