@@ -157,3 +157,43 @@
             </div>
         </div>
     </div>
+
+    <div class="col s12 m6">
+        <div class="card grey lighten-5">
+            <div class="card-content">
+                <h5 style="text-align:center">Províncies</h5>
+                <div class="col s6 m4 l3">
+                    <div class="counter pro">
+                        <div class="num">{{girona}}</div>
+                        <div class="label">Girona</div>
+                    </div>
+                </div>
+                <div class="col s6 m4 l3">
+                    <div class="counter pro">
+                        <div class="num">{{barcelona}}</div>
+                        <div class="label">Barcelona</div>
+                    </div>
+                </div>
+                <div class="col s6 m4 l3">
+                    <div class="counter pro">
+                        <div class="num">{{lleida}}</div>
+                        <div class="label">Lleida</div>
+                    </div>
+                </div>
+                <div class="col s6 m4 l3">
+                    <div class="counter pro">
+                        <div class="num">{{tarragona}}</div>
+                        <div class="label">Tarragona</div>
+                    </div>
+                </div>
+                <div class="col s12">
+                    <div class="counter pro">
+                        <div class="num"><span style="font-size:20px;">Altres: </span> {{altres.length}}</div>
+                        <div class="label" ng-repeat="altre in altres track by $index">{{altre}}
+                        </div>
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+    </div>

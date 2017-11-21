@@ -801,7 +801,7 @@ app.controller("DadesCtrl", function ($scope, $state, $stateParams, $firebaseArr
     $scope.barcelona = 0;
     $scope.tarragona = 0;
     $scope.girona = 0;
-
+    $scope.altres = [];
     $scope.cotxes.$loaded().then(function () {
         $scope.cotxes.forEach(function (cotxe) {
             setTimeout(function () {
@@ -817,6 +817,18 @@ app.controller("DadesCtrl", function ($scope, $state, $stateParams, $firebaseArr
                     });
                 })(cotxe);*/
                 $scope.places += Number(cotxe.passatgers) || 0;
+                if (cotxe.provincia == "Barcelona") {
+                    $scope.barcelona += 1;
+                } else if (cotxe.provincia == "Lleida" || cotxe.provincia == "Lérida") {
+                    $scope.lleida += 1;
+                } else if (cotxe.provincia == "Girona" || cotxe.provincia == "Gerona" || cotxe.provincia == "Province of Girona") {
+                    $scope.girona += 1;
+                } else if (cotxe.provincia == "Tarragona") {
+                    $scope.tarragona += 1;
+                } else {
+                    $scope.altres.push(cotxe.provincia || "sense definir");
+                }
+
                 if (cotxe.vehicle == "Cotxe") {
                     $scope.num_cotxes += 1;
                     $scope.cotxe_places += Number(cotxe.passatgers) || 0;
