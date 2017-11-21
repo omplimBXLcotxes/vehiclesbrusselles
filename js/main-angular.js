@@ -405,8 +405,8 @@ app.controller("AddCtrl", function ($scope, $state, $stateParams, $firebaseArray
                 $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&key=AIzaSyCTCdp2zHmt3pJ3KDzy8VOE2HzIvU7pNaI", function (data) {
                     data.results.forEach(function (result) {
                         if (result.types[0] == "administrative_area_level_3") {
-                            $scope.comarca = (result.address_components[0].long_name);
-                            $scope.provincia = (result.address_components[1].long_name);
+                            $scope.comarca = (result.address_components[0].long_name || "");
+                            $scope.provincia = (result.address_components[1].long_name || "");
                         }
                     });
                 });
@@ -813,6 +813,7 @@ app.controller("DadesCtrl", function ($scope, $state, $stateParams, $firebaseArr
                                 ref.child("cotxes/" + ct.$id + "/comarca").set(result.address_components[0].long_name);
                                 ref.child("cotxes/" + ct.$id + "/provincia").set(result.address_components[1].long_name);
                             }
+                         }
                         });
                     });
                 })(cotxe);*/
