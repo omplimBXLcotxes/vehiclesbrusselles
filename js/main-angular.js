@@ -598,10 +598,12 @@ app.controller("LoginCtrl", function ($scope, $state, $stateParams, $firebaseArr
     firebase.auth().onAuthStateChanged(function (user) {
         if ((user) && (user.emailVerified == false)) {
             user.sendEmailVerification().then(function () {
-                $state.go("verificar", {
-                    mid: $stateParams.mid,
-                    fin: $stateParams.fin
-                });
+                setTimeout(function () {
+                    $state.go("verificar", {
+                        mid: $stateParams.mid,
+                        fin: $stateParams.fin
+                    });
+                }, 400);
             });
         } else if ((user) && (user.emailVerified == true)) {
             if ($stateParams.mid == "afegir") {
