@@ -280,11 +280,13 @@ app.controller("AddCtrl", function ($scope, $state, $stateParams, $firebaseArray
                     } else if (passatgers < 0 || lliures < 0) {
                         alert("El nombre de passatgers i/o places disponibles no pot ser inferior a 0");
                     } else if (passatgers < lliures) {
-                        alert("El nombre de places lliures no pot ser inferior al de passatgers");
+                        alert("El nombre de places lliures no pot ser superior al de passatgers");
                     } else if (passatgers > 10) {
                         alert("Número de passatgers molt elevat.\No es pot publicar. Contacta'ns a vehiclesbrusselles@gmail.com i t'ajudarem.");
                     } else if (passatgers == 0) {
                         alert("El nombre de passatgers no pot ser 0");
+                    } else if (passatgers % 1 != 0 || lliures % 1 != 0) {
+                        alert("El nombre de passatgers i/o places disponibles ha de ser un nombre enter");
                     } else {
 
                         ref.child("cotxes").push({
