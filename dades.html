@@ -64,9 +64,242 @@
             height: 2200px;
             top: 0;
         }
+        
+        .counter {
+            display: inline-block;
+            width: 30%;
+            margin: 1.22%;
+            background-color: rgba(255, 255, 255, .8);
+            border-radius: 2px;
+            text-align: center;
+            border: 1.4px solid lightgrey;
+            padding: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .counter.pro {
+            width: 100%;
+            margin: auto;
+            margin-top: 8px;
+            margin-bottom: 10px;
+        }
+        
+        .counter .num {
+            font-size: 28px;
+        }
 
     </style>
-    <div id="chart_div" class="chart"></div>
+    <br>
+    <div class="row">
+        <div class="col s12">
+            <a class="btn col s12" ui-sref="home">TORNA A L'INICI</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m6">
+            <div class="card grey lighten-5">
+                <div class="card-content">
+                    <h5 style="text-align:center">Tots els vehicles</h5>
+                    <div class="col s6 m4 l3">
+                        <div class="counter pro">
+                            <div class="num">{{cotxes.length}}</div>
+                            <div class="label">vehicles</div>
+                        </div>
+                    </div>
+                    <div class="col s6 m4 l3">
+                        <div class="counter pro">
+                            <div class="num">{{places | number:0}}</div>
+                            <div class="label">places</div>
+                        </div>
+                    </div>
+                    <div class="col s6 m4 l3">
+                        <div class="counter pro">
+                            <div class="num">{{places - placeslliures | number:0}}</div>
+                            <div class="label">places plenes</div>
+                        </div>
+                    </div>
+                    <div class="col s6 m4 l3">
+                        <div class="counter pro">
+                            <div class="num">{{placeslliures | number:0}}</div>
+                            <div class="label">places lliures</div>
+                        </div>
+                    </div>
+                    <div class="col s6 m4 l3">
+                        <div class="counter pro">
+                            <div class="num">{{places/cotxes.length | number:2}}</div>
+                            <div class="label">places per<br>vehicle</div>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m6">
+            <div class="card grey lighten-5">
+                <div class="card-content">
+                    <h5 style="text-align:center">Cotxes</h5>
+                    <div class="col s6 m4 l3">
+                        <div class="counter pro">
+                            <div class="num">{{num_cotxes}}</div>
+                            <div class="label">cotxes</div>
+                        </div>
+                    </div>
+                    <div class="col s6 m4 l3">
+                        <div class="counter pro">
+                            <div class="num">{{cotxe_places | number:0}}</div>
+                            <div class="label">places</div>
+                        </div>
+                    </div>
+                    <div class="col s6 m4 l3">
+                        <div class="counter pro">
+                            <div class="num">{{cotxe_places - cotxe_placeslliures | number:0}}</div>
+                            <div class="label">places plenes</div>
+                        </div>
+                    </div>
+                    <div class="col s6 m4 l3">
+                        <div class="counter pro">
+                            <div class="num">{{cotxe_placeslliures | number:0}}</div>
+                            <div class="label">places lliures</div>
+                        </div>
+                    </div>
+                    <div class="col s6 m4 l3">
+                        <div class="counter pro">
+                            <div class="num">{{cotxe_places/num_cotxes | number:2}}</div>
+                            <div class="label">places per<br>cotxe</div>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m6">
+            <div class="card grey lighten-5">
+                <div class="card-content">
+                    <h5 style="text-align:center">Motos</h5>
+                    <div class="col s6 m4 l3">
+                        <div class="counter pro">
+                            <div class="num">{{num_motos}}</div>
+                            <div class="label">motos</div>
+                        </div>
+                    </div>
+                    <div class="col s6 m4 l3">
+                        <div class="counter pro">
+                            <div class="num">{{moto_places | number:0}}</div>
+                            <div class="label">places</div>
+                        </div>
+                    </div>
+                    <div class="col s6 m4 l3">
+                        <div class="counter pro">
+                            <div class="num">{{moto_places - moto_placeslliures | number:0}}</div>
+                            <div class="label">places plenes</div>
+                        </div>
+                    </div>
+                    <div class="col s6 m4 l3">
+                        <div class="counter pro">
+                            <div class="num">{{moto_placeslliures | number:0}}</div>
+                            <div class="label">places lliures</div>
+                        </div>
+                    </div>
+                    <div class="col s6 m4 l3">
+                        <div class="counter pro">
+                            <div class="num">{{moto_places/num_motos | number:2}}</div>
+                            <div class="label">places per<br>moto</div>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m6">
+            <div class="card grey lighten-5">
+                <div class="card-content">
+                    <h5 style="text-align:center">Caravanes</h5>
+                    <div class="col s6 m4 l3">
+                        <div class="counter pro">
+                            <div class="num">{{num_caravanes}}</div>
+                            <div class="label">caravanes</div>
+                        </div>
+                    </div>
+                    <div class="col s6 m4 l3">
+                        <div class="counter pro">
+                            <div class="num">{{caravana_places | number:0}}</div>
+                            <div class="label">places</div>
+                        </div>
+                    </div>
+                    <div class="col s6 m4 l3">
+                        <div class="counter pro">
+                            <div class="num">{{caravana_places - caravana_placeslliures | number:0}}</div>
+                            <div class="label">places plenes</div>
+                        </div>
+                    </div>
+                    <div class="col s6 m4 l3">
+                        <div class="counter pro">
+                            <div class="num">{{caravana_placeslliures | number:0}}</div>
+                            <div class="label">places lliures</div>
+                        </div>
+                    </div>
+                    <div class="col s6 m4 l3">
+                        <div class="counter pro">
+                            <div class="num">{{caravana_places/num_caravanes | number:2}}</div>
+                            <div class="label">places per<br>caravanes</div>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col s12 m6">
+            <div class="card grey lighten-5">
+                <div class="card-content">
+                    <h5 style="text-align:center">Províncies</h5>
+                    <div id="chart_div_p" class="col s12" style="height:300px"></div>
+                    <div class="col s6 m4 l3">
+                        <div class="counter pro">
+                            <div class="num">{{girona}}</div>
+                            <div class="label">Girona</div>
+                        </div>
+                    </div>
+                    <div class="col s6 m4 l3">
+                        <div class="counter pro">
+                            <div class="num">{{barcelona}}</div>
+                            <div class="label">Barcelona</div>
+                        </div>
+                    </div>
+                    <div class="col s6 m4 l3">
+                        <div class="counter pro">
+                            <div class="num">{{lleida}}</div>
+                            <div class="label">Lleida</div>
+                        </div>
+                    </div>
+                    <div class="col s6 m4 l3">
+                        <div class="counter pro">
+                            <div class="num">{{tarragona}}</div>
+                            <div class="label">Tarragona</div>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <div class="counter pro">
+                            <div class="num">{{altres}}</div>
+                            <div class="label">Altres
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m6">
+            <div class="card grey lighten-5">
+                <div class="card-content">
+                    <h5 style="text-align:center">Comarques</h5>
+                    <div id="chart_div" class="col s12" style="height:2100px"></div>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         app.controller("DadesCtrl", function($scope, $state, $stateParams, $firebaseArray, $firebaseObject) {
             var ref = firebase.database().ref();
@@ -103,14 +336,75 @@
                 return compressed;
             };
 
+            $scope.num_cotxes = 0;
+            $scope.num_motos = 0;
+            $scope.num_caravanes = 0;
+
+            $scope.places = 0;
+            $scope.placeslliures = 0;
+
+            $scope.cotxe_places = 0;
+            $scope.cotxe_placeslliures = 0;
+
+            $scope.moto_places = 0;
+            $scope.moto_placeslliures = 0;
+
+            $scope.caravana_places = 0;
+            $scope.caravana_placeslliures = 0;
+
+            $scope.girona = 0;
+            $scope.tarragona = 0;
+            $scope.lleida = 0;
+            $scope.barcelona = 0;
+            $scope.altres = 0;
+
             $scope.cotxes.$loaded().then(function() {
                 $scope.comarques = [];
                 $scope.provincies = [];
                 $scope.cotxes.forEach(function(cotxe) {
                     $scope.comarques.push(cotxe.comarca);
+                    $scope.places += Number(cotxe.passatgers) || 0;
+                    if (cotxe.provincia == "Barcelona") {
+                        $scope.barcelona += 1;
+                    } else if (cotxe.provincia == "Lleida" || cotxe.provincia == "Lérida") {
+                        $scope.lleida += 1;
+                    } else if (cotxe.provincia == "Girona" || cotxe.provincia == "Gerona" || cotxe.provincia == "Province of Girona") {
+                        $scope.girona += 1;
+                    } else if (cotxe.provincia == "Tarragona") {
+                        $scope.tarragona += 1;
+                    } else {
+                        $scope.altres += 1;
+                    }
+
+                    if (cotxe.vehicle == "Cotxe") {
+                        $scope.num_cotxes += 1;
+                        $scope.cotxe_places += Number(cotxe.passatgers) || 0;
+                    } else if (cotxe.vehicle == "Moto") {
+                        $scope.num_motos += 1;
+                        $scope.moto_places += Number(cotxe.passatgers) || 0;
+                    } else if (cotxe.vehicle == "Caravana") {
+                        $scope.num_caravanes += 1;
+                        $scope.caravana_places += Number(cotxe.passatgers) || 0;
+                    }
+                    $scope.placeslliures += (Number(cotxe.lliures) || 0);
+                    if (cotxe.vehicle == "Cotxe") {
+                        $scope.cotxe_placeslliures += Number(cotxe.lliures) || 0;
+                    } else if (cotxe.vehicle == "Moto") {
+                        $scope.moto_placeslliures += Number(cotxe.lliures) || 0;
+                    } else if (cotxe.vehicle == "Caravana") {
+                        $scope.caravana_placeslliures += Number(cotxe.lliures) || 0;
+                    }
                 });
                 setTimeout(function() {}, 1000)
                 drawChart(compressArray($scope.comarques));
+                cProvincies();
+                setTimeout(function() {
+                    ref.child("dades/totals").set({
+                        cotxes: $scope.cotxes.length,
+                        places: $scope.places,
+                        placeslliures: $scope.placeslliures
+                    });
+                }, 1000);
             });
 
             function drawChart(dades) {
@@ -124,14 +418,58 @@
                 });
 
                 // Set chart options
-                var options = {
-                    'title': 'Comarques'
-                };
+                var options = {};
 
                 // Instantiate and draw our chart, passing in some options.
                 var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
                 chart.draw(data, options);
             }
+
+            function cProvincies() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Província');
+                data.addColumn('number', 'Vehicles registrats');
+                data.addRows([
+                    ["Barcelona", $scope.barcelona],
+                    ["Lleida", $scope.lleida],
+                    ["Girona", $scope.girona],
+                    ["Tarragona", $scope.tarragona],
+                    ["Altres", $scope.altres]
+                ]);
+                data.sort({
+                    column: 1,
+                    desc: true
+                });
+
+                // Set chart options
+                var options = {};
+
+                // Instantiate and draw our chart, passing in some options.
+                var chart = new google.visualization.PieChart(document.getElementById('chart_div_p'));
+                chart.draw(data, options);
+            }
+
+
+
+            //ZONA COMENTADA, EN CAS DE SER NECESSARI S'EXECUTA UNA VEGADA I OMPLA ELS CAMPS COMARCA I PROVINCIA DELS QUE NO LA TENEN DEFINIDA
+            /*(function (ct) {
+                $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + ct.location.lat + "," + ct.location.lng + "&key=AIzaSyCTCdp2zHmt3pJ3KDzy8VOE2HzIvU7pNaI", function (data) {
+                    data.results.forEach(function (result) {
+                        if (result.types[0] == "administrative_area_level_3") {
+                            ref.child("cotxes/" + ct.$id + "/comarca").set(result.address_components[0].long_name);
+                            ref.child("cotxes/" + ct.$id + "/provincia").set(result.address_components[1].long_name);
+                        }
+                     }
+                    });
+                });
+            })(cotxe);*/
+
+
+
+
+
+
+
         });
 
     </script>
