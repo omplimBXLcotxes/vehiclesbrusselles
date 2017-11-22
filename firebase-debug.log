@@ -1,0 +1,28 @@
+[debug] [2017-11-21T21:48:10.759Z] ----------------------------------------------------------------------
+[debug] [2017-11-21T21:48:10.763Z] Command:      /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2017-11-21T21:48:10.764Z] CLI Version:  3.9.1
+[debug] [2017-11-21T21:48:10.764Z] Platform:     darwin
+[debug] [2017-11-21T21:48:10.764Z] Node Version: v6.9.1
+[debug] [2017-11-21T21:48:10.765Z] Time:         Tue Nov 21 2017 22:48:10 GMT+0100 (CET)
+[debug] [2017-11-21T21:48:10.765Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-11-21T21:48:10.790Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-11-21T21:48:10.790Z] > authorizing via signed-in user
+[debug] [2017-11-21T21:48:10.795Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/cotxesbrusselles  
+ Tue Nov 21 2017 22:48:10 GMT+0100 (CET)
+[debug] [2017-11-21T21:48:11.967Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-21T21:48:11.969Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/cotxesbrusselles/tokens  
+ Tue Nov 21 2017 22:48:11 GMT+0100 (CET)
+[debug] [2017-11-21T21:48:12.885Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/marcpujolgualdo/Downloads/brux'...
+[info] 
+[debug] [2017-11-21T21:48:12.891Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/cotxesbrusselles  
+ Tue Nov 21 2017 22:48:12 GMT+0100 (CET)
+[debug] [2017-11-21T21:48:14.011Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-21T21:48:14.011Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/71052176283/clients/_:getWebAppConfig  
+ Tue Nov 21 2017 22:48:14 GMT+0100 (CET)
+[debug] [2017-11-21T21:48:14.776Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+

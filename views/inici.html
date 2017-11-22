@@ -80,7 +80,7 @@
                 <h1 class="card-title">{{cotxe.nom}} <b class="smaller" ng-if="cotxe.lliures">- {{cotxe.lliures}} places lliures<b ng-if="cotxe.preu">, {{cotxe.preu}}€/persona</b></b></h1>
                 <p><i ng-if="cotxe.vehicle=='Cotxe'" class="material-icons">directions_car</i><i ng-if="cotxe.vehicle=='Moto'" class="material-icons">motorcycle</i><i ng-if="cotxe.vehicle=='Caravana'" class="material-icons">directions_bus</i> {{cotxe.vehicle}}</p>
                 <p><i class="material-icons">person</i> {{cotxe.passatgers}} persones <b ng-if="cotxe.lliures">({{cotxe.lliures}} places lliures)</b></p>
-                <p><i class="material-icons">location_on</i> {{cotxe.ubicacio}}</p>
+                <p><i class="material-icons">location_on</i> {{cotxe.ubicacio}} | {{cotxe.comarca}}</p>
                 <p><i class="material-icons">today</i> Sortida: {{cotxe.anada}} a les {{cotxe.hanada}}</p>
                 <p><i class="material-icons">today</i>Tornada: {{cotxe.tornada}} a les {{cotxe.htornada}}</p>
                 <br>

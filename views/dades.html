@@ -1,3 +1,30 @@
+<head>
+    <script type="text/javascript">
+        google.charts.load('current', {
+            packages: ['corechart']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            // Define the chart to be drawn.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Element');
+            data.addColumn('number', 'Percentage');
+            data.addRows([
+                ['Nitrogen', 0.78],
+                ['Oxygen', 0.21],
+                ['Other', 0.01]
+            ]);
+
+            // Instantiate and draw the chart.
+            var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
+            chart.draw(data, null);
+        }
+
+    </script>
+</head>
+<div id="myPieChart" />
+
 <br>
 <div class="row">
     <div class="col s12">
@@ -193,6 +220,22 @@
                         </div>
                     </div>
                 </div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col s12 m6">
+        <div class="card grey lighten-5">
+            <div class="card-content">
+                <h5 style="text-align:center">Comarques</h5>
+                <div class="col s6 m4 l3" ng-repeat="comarca in comarques track by $index">
+                    <div class="counter pro">
+                        <div class="num">{{comarca.num}}</div>
+                        <div class="label">{{comarca.nom}}</div>
+                    </div>
+                </div>
+                <div id="chart_div"></div>
                 <div style="clear:both;"></div>
             </div>
         </div>

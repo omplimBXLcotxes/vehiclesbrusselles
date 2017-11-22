@@ -1,4 +1,4 @@
-var app = angular.module("MyApp", ["firebase", 'ui.router', 'angularMoment']);
+var app = angular.module("MyApp", ["firebase", 'ui.router', 'angularMoment', "googlechart"]);
 
 app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     // Redirect any unmatched url
@@ -598,12 +598,10 @@ app.controller("LoginCtrl", function ($scope, $state, $stateParams, $firebaseArr
     firebase.auth().onAuthStateChanged(function (user) {
         if ((user) && (user.emailVerified == false)) {
             user.sendEmailVerification().then(function () {
-                setTimeout(function () {
-                    $state.go("verificar", {
-                        mid: $stateParams.mid,
-                        fin: $stateParams.fin
-                    });
-                }, 400);
+                $state.go("verificar", {
+                    mid: $stateParams.mid,
+                    fin: $stateParams.fin
+                });
             });
         } else if ((user) && (user.emailVerified == true)) {
             if ($stateParams.mid == "afegir") {
@@ -782,86 +780,5 @@ app.controller("ContactarCtrl", function ($scope, $state, $stateParams, $firebas
                 initMap();
             });
         }
-    });
-});
-
-
-app.controller("DadesCtrl", function ($scope, $state, $stateParams, $firebaseArray, $firebaseObject) {
-    var ref = firebase.database().ref();
-    $scope.cotxes = $firebaseArray(ref.child("cotxes"));
-    $scope.num_cotxes = 0;
-    $scope.num_motos = 0;
-    $scope.num_caravanes = 0;
-    $scope.places = 0;
-    $scope.placeslliures = 0;
-    $scope.cotxe_places = 0;
-    $scope.cotxe_placeslliures = 0;
-    $scope.moto_places = 0;
-    $scope.moto_placeslliures = 0;
-    $scope.caravana_places = 0;
-    $scope.caravana_placeslliures = 0;
-
-    $scope.lleida = 0;
-    $scope.barcelona = 0;
-    $scope.tarragona = 0;
-    $scope.girona = 0;
-    $scope.altres = [];
-    $scope.cotxes.$loaded().then(function () {
-        $scope.cotxes.forEach(function (cotxe) {
-            setTimeout(function () {
-                //ZONA COMENTADA, EN CAS DE SER NECESSARI S'EXECUTA UNA VEGADA I OMPLA ELS CAMPS COMARCA I PROVINCIA DELS QUE NO LA TENEN DEFINIDA
-                /*(function (ct) {
-                    $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + ct.location.lat + "," + ct.location.lng + "&key=AIzaSyCTCdp2zHmt3pJ3KDzy8VOE2HzIvU7pNaI", function (data) {
-                        data.results.forEach(function (result) {
-                            if (result.types[0] == "administrative_area_level_3") {
-                                ref.child("cotxes/" + ct.$id + "/comarca").set(result.address_components[0].long_name);
-                                ref.child("cotxes/" + ct.$id + "/provincia").set(result.address_components[1].long_name);
-                            }
-                         }
-                        });
-                    });
-                })(cotxe);*/
-                $scope.places += Number(cotxe.passatgers) || 0;
-                if (cotxe.provincia == "Barcelona") {
-                    $scope.barcelona += 1;
-                } else if (cotxe.provincia == "Lleida" || cotxe.provincia == "Lérida") {
-                    $scope.lleida += 1;
-                } else if (cotxe.provincia == "Girona" || cotxe.provincia == "Gerona" || cotxe.provincia == "Province of Girona") {
-                    $scope.girona += 1;
-                } else if (cotxe.provincia == "Tarragona") {
-                    $scope.tarragona += 1;
-                } else {
-                    $scope.altres.push(cotxe.provincia || "sense definir");
-                }
-
-                if (cotxe.vehicle == "Cotxe") {
-                    $scope.num_cotxes += 1;
-                    $scope.cotxe_places += Number(cotxe.passatgers) || 0;
-                } else if (cotxe.vehicle == "Moto") {
-                    $scope.num_motos += 1;
-                    $scope.moto_places += Number(cotxe.passatgers) || 0;
-                } else if (cotxe.vehicle == "Caravana") {
-                    $scope.num_caravanes += 1;
-                    $scope.caravana_places += Number(cotxe.passatgers) || 0;
-                }
-                $scope.placeslliures += (Number(cotxe.lliures) || 0);
-                if (cotxe.vehicle == "Cotxe") {
-                    $scope.cotxe_placeslliures += Number(cotxe.lliures) || 0;
-                } else if (cotxe.vehicle == "Moto") {
-                    $scope.moto_placeslliures += Number(cotxe.lliures) || 0;
-                } else if (cotxe.vehicle == "Caravana") {
-                    $scope.caravana_placeslliures += Number(cotxe.lliures) || 0;
-                }
-
-                $scope.$apply();
-            }, 200);
-        });
-        setTimeout(function () {
-            ref.child("dades/totals").set({
-                cotxes: $scope.cotxes.length,
-                places: $scope.places,
-                placeslliures: $scope.placeslliures
-            });
-        }, 1000);
     });
 });
