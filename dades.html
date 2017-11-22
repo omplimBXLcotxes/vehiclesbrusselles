@@ -60,10 +60,9 @@
 <body ng-controller="DadesCtrl">
     <style>
         .chart {
-            box-sizing: border-box;
-            display: inline-block;
-            width: 50%;
-            height: 2200;
+            width: 80%;
+            height: 2200px;
+            top: 0;
         }
 
     </style>
@@ -119,6 +118,10 @@
                 data.addColumn('string', 'Comarca');
                 data.addColumn('number', 'Vehicles registrats');
                 data.addRows(dades);
+                data.sort({
+                    column: 1,
+                    desc: true
+                });
 
                 // Set chart options
                 var options = {
