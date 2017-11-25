@@ -92,7 +92,7 @@
     <br>
     <div class="row">
         <div class="col s12">
-            <a class="btn col s12" ui-sref="home">TORNA A L'INICI</a>
+            <a class="btn col s12" href="https://cotxes.omplimbrusselles.eu">TORNA A COTXES.OMPLIMBRUSSELLES.EU</a>
         </div>
     </div>
     <div class="row">
@@ -295,6 +295,40 @@
                     <h5 style="text-align:center">Comarques</h5>
                     <div id="chart_div" class="col s12" style="height:2100px"></div>
                     <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col s12">
+            <div class="card grey lighten-5">
+                <div class="card-content">
+                    <h5 style="text-align:center">Llistat</h5>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Vehicle</th>
+                                <th>Places/Places lliures</th>
+                                <th>Anada</th>
+                                <th>Tornada</th>
+                                <th>Ubicació</th>
+                                <th>Comarca</th>
+                                <th>Província</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr ng-repeat="cotxe in cotxes | orderBy:'comarca'">
+                                <td>{{cotxe.nom}}</td>
+                                <td>{{cotxe.vehicle}}</td>
+                                <td>{{cotxe.passatgers}} / {{cotxe.lliures}}</td>
+                                <td>{{cotxe.anada}} - {{cotxe.hanada}}</td>
+                                <td>{{cotxe.tornada}} - {{cotxe.htornada}}</td>
+                                <td>{{cotxe.ubicacio}}</td>
+                                <td>{{cotxe.comarca || "No definit"}}</td>
+                                <td>{{cotxe.provincia || "No definit"}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
