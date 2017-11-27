@@ -193,14 +193,16 @@ app.controller("HomeCtrl", function ($scope, $state, $stateParams, $firebaseArra
                     text: "<a href='#/contactar/" + place.$id + "'>" + place.ubicacio + " - " + place.passatgers + " persones</a>"
                 }
                 var label = "";
-                if (place.lliures > 0) {
-                    label = "*";
+                if (place.vehicle == "Moto") {
+                    label = "moto.png";
+                } else if (place.vehicle == "Caravana") {
+                    label = "caravana.png";
                 } else {
-                    label = ""
+                    label = "cotxe.png";
                 }
                 var marker = new google.maps.Marker({
                     position: markerData,
-                    label: label
+                    icon: label
                 });
                 google.maps.event.addListener(marker, 'spider_click', function (e) { // 'spider_click', not plain 'click'
                     infowindow.setContent(markerData.text);
