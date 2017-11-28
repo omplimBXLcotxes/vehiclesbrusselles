@@ -1,0 +1,392 @@
+<!DOCTYPE HTML>
+<!--
+	Prologue by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+    <title>Omplim Brussel·les</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div id="header">
+
+        <div class="top">
+
+            <!-- Logo -->
+            <div id="logo">
+                <!--<span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>-->
+                <h1 id="title">OMPLIM BRUSSEL·LES</h1>
+                <p>#OmplimBrussel·les el 7D</p>
+            </div>
+
+            <!-- Nav -->
+            <nav id="nav">
+                <!--
+
+								Prologue's nav expects links in one of two formats:
+
+								1. Hash link (scrolls to a different section within the page)
+
+								   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
+
+								2. Standard link (sends the user to another page/site)
+
+								   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+
+							-->
+                <ul>
+                    <li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">INICI</span></a></li>
+                    <li><a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-car">BUSCA/OFEREIX<br>TRANSPORT</span></a></li>
+                    <li><a href="#about" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-comments-o">PARLA AMB EL BOT</span></a></li>
+                    <li><a href="#whats" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-whatsapp">GRUPS DE WHATSAPP TERRITORIALS</span></a></li>
+                    <li><a target="_blank" href="https://www.viamichelin.es/web/Itinerarios/Itinerario-La_Jonquera-_-Girona-Espana-hacia-Bruselas-_-Bruxelles_Capitale-Belgica" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-road">RUTES</span></a></li>
+                    <li><a href="#manual" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-book">MANUAL D'ÚS</span></a></li>
+                    <li><a href="#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">CONTACTA</span></a></li>
+                </ul>
+            </nav>
+
+        </div>
+
+        <div class="bottom">
+
+            <!-- Social Icons -->
+            <ul class="icons">
+                <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                <li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!-- Main -->
+    <div id="main">
+
+        <!-- Intro -->
+        <section id="top" class="one dark cover">
+            <div class="container">
+
+                <header>
+                    <h2 class="alt">El 7 de desembre,  <strong>#OmplimBrussel·les</strong>!<br /></h2><br>
+                    <div class="clock"></div>
+                    <div id="clockdiv">
+                        <div>
+                            <span class="days"></span>
+                            <div class="smalltext">Dies</div>
+                        </div>
+                        <div>
+                            <span class="hours"></span>
+                            <div class="smalltext">Hores</div>
+                        </div>
+                        <div>
+                            <span class="minutes"></span>
+                            <div class="smalltext">Minuts</div>
+                        </div>
+                        <div>
+                            <span class="seconds"></span>
+                            <div class="smalltext">Segons</div>
+                        </div>
+                    </div>
+
+                    <style>
+                        #clockdiv {
+                            font-family: sans-serif;
+                            color: #fff;
+                            display: inline-block;
+                            font-weight: 100;
+                            text-align: center;
+                            font-size: 36px;
+                        }
+                        
+                        #clockdiv> div {
+                            padding: 10px 20px;
+                            border-radius: 3px;
+                            background: #00BF96;
+                            display: inline-block;
+                        }
+                        
+                        #clockdiv div> span {
+                            padding: 15px 22px;
+                            border-radius: 3px;
+                            background: #00816A;
+                            display: inline-block;
+                        }
+                        
+                        .smalltext {
+                            padding-top: 5px;
+                            font-size: 22px;
+                        }
+
+                    </style>
+                    <script>
+                        function getTimeRemaining(endtime) {
+                            var t = Date.parse(endtime) - Date.parse(new Date());
+                            var seconds = Math.floor((t / 1000) % 60);
+                            var minutes = Math.floor((t / 1000 / 60) % 60);
+                            var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+                            var days = Math.floor(t / (1000 * 60 * 60 * 24));
+                            return {
+                                'total': t,
+                                'days': days,
+                                'hours': hours,
+                                'minutes': minutes,
+                                'seconds': seconds
+                            };
+                        }
+
+                        function initializeClock(id, endtime) {
+                            var clock = document.getElementById(id);
+                            var daysSpan = clock.querySelector('.days');
+                            var hoursSpan = clock.querySelector('.hours');
+                            var minutesSpan = clock.querySelector('.minutes');
+                            var secondsSpan = clock.querySelector('.seconds');
+
+                            function updateClock() {
+                                var t = getTimeRemaining(endtime);
+
+                                daysSpan.innerHTML = t.days;
+                                hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+                                minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+                                secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+                                if (t.total <= 0) {
+                                    clearInterval(timeinterval);
+                                }
+                            }
+
+                            updateClock();
+                            var timeinterval = setInterval(updateClock, 1000);
+                        }
+
+                        var deadline = new Date(1512640800000);
+                        initializeClock('clockdiv', deadline);
+
+                    </script>
+                </header>
+                <!--<footer>
+                    <a href="#portfolio" class="button scrolly">JA SOM <span></span></a>
+                </footer>-->
+            </div>
+        </section>
+
+        <!-- Portfolio -->
+        <section id="portfolio" class="two">
+            <div class="container">
+
+                <header>
+                    <h2>Com anar a Brussel·les</h2>
+                </header>
+
+                <p>Hem creat una plataforma de car-sharing per compartir vehicles.<br>Si vas amb el teu propi transport a Brussel·les, si us plau, inscriu-te!<br>Si busques transport, podràs cercar entre centenars de publicacions i contactar amb els conductors!</p>
+                <h3><b><i>Ja som <span id="num_vehicles"></span> vehicles insrits. (<span id="num_persones"></span> places, <span id="num_lliures"></span> de lliures)</i></b></h3><br>
+                <p>Prem el transport que vulguis oferir/buscar</p>
+
+                <div class="row">
+                    <div class="4u 12u$(mobile)">
+                        <a href="https://cotxes.omplimbrusselles.eu">
+                            <article class="item">
+                                <div class="image fit"><img src="http://www.omplimbrusselles.eu/wp-content/uploads/2017/11/cotxes.jpeg" alt="" /></div>
+                                <header>
+                                    <h3>Cotxes</h3>
+                                </header>
+                            </article>
+                        </a><br>
+                        <a href="https://cotxes.omplimbrusselles.eu">
+                            <article class="item">
+                                <div class="image fit"><img src="http://www.omplimbrusselles.eu/wp-content/uploads/2017/11/motos.jpeg" alt="" /></div>
+                                <header>
+                                    <h3>Motos</h3>
+                                </header>
+                            </article>
+                        </a>
+                    </div>
+                    <div class="4u 12u$(mobile)">
+                        <a href="https://cotxes.omplimbrusselles.eu">
+                            <article class="item">
+                                <div class="image fit"><img src="http://www.omplimbrusselles.eu/wp-content/uploads/2017/11/caravanes2.jpg" alt="" /></div>
+                                <header>
+                                    <h3>Caravanes</h3>
+                                </header>
+                            </article>
+                        </a>
+                        <br>
+                        <a href="https://organitzats.omplimbrusselles.eu">
+                            <article class="item">
+                                <div class="image fit"><img src="images/bus.jpeg" alt="" /></div>
+                                <header>
+                                    <h3>Autobusos</h3>
+                                </header>
+                            </article>
+                        </a>
+                    </div>
+                    <div class="4u 12u$(mobile)">
+                        <a href="https://organitzats.omplimbrusselles.eu">
+                            <article class="item">
+                                <div class="image fit"><img src="images/avio.jpeg" alt="" /></div>
+                                <header>
+                                    <h3>Avió</h3>
+                                </header>
+                            </article>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- About Me -->
+        <section id="about" class="three">
+            <div class="container">
+
+                <header>
+                    <h2>Parla amb el nostre Bot</h2>
+                </header>
+
+                <p>Pots preguntar-li el que sigui sobre la mani de Brussel·les (i sobre altres coses!) i t'ajudarà tant com pugui.<br><i>Quin temps farà a Brussel·les, Com puc anar-hi en cotxe?, Quina ruta he de seguir?...</i></p>
+                <iframe width="85%" height="600" src="https://console.dialogflow.com/api-client/demo/embedded/d58ec471-903f-4baa-b2e4-4f756013ad43"></iframe>
+            </div>
+        </section>
+
+        <!-- About Me -->
+        <section id="whats" class="three">
+            <div class="container">
+
+                <header>
+                    <h2>Grups de Whatsapp Territorials</h2>
+                </header>
+
+                <p style="text-align: center;">Llistat exhaustiu de grups de WhatsApp actualment actius per coordinar-se amb persones del territori per el viatge a Brussel·les en cotxe. Allà podreu parlar sobre els punts de trobada, horaris, organització, etc.</p>
+                <p style="text-align: center;">Si no trobeu territorial de la vostra zona podeu entrar al grup més proper a la teva comarca.</p>
+                <p style="text-align: center;"><a href="https://chat.whatsapp.com/7UGjx7mdcHC0dNuea4kzI8"><strong>Alt Empordà</strong></a> · <a href="https://chat.whatsapp.com/Iyfnd6XJiQt1jUqfhA0AdG"><strong>Alt Penedès</strong></a> · <a href="https://chat.whatsapp.com/7dOzqbrQeP5Dal4pIbpOvm"><strong>Anoia</strong></a><br />
+                    <a href="https://chat.whatsapp.com/Fe0mPFFWHFZGEIsvF492Wh"><strong>Bages</strong></a> · <a href="https://chat.whatsapp.com/3H8bMPq3hRB5bKAST5ouLI"><strong>Baix Llobregat</strong></a> · <a href="https://chat.whatsapp.com/JNMUlJKtfGpFMUsksjhk1w"><strong>BCN Eixample</strong></a> · <a href="https://chat.whatsapp.com/HN2YBavI0enFInYp1LW4gx"><strong>BCN St. Martí i Horta-Guinardó</strong></a> · <a href="https://chat.whatsapp.com/HN4Lp3uPywD7ywwDPD2UtW"><strong>BCN Nou Barris, Sant Andreu i Sta. Coloma</strong></a> · <a href="https://chat.whatsapp.com/HBRP4Fy97lc0qtIO1tDW4B"><strong>BCN Sants i Montjuïc</strong></a> · <a href="https://chat.whatsapp.com/BsMpPXf3ydp50wQt0dbCXJ"><strong>BCN Sarrià i Sant Gervasi</strong></a> · <a href="https://chat.whatsapp.com/GkTN8XZ7bKi3jVspocqXzo"><strong>Badalona</strong></a> · <a href="https://chat.whatsapp.com/BwIyYfJbMuhGXB35pFVnjz"><strong>Berguedà</strong></a><br />
+                    <a href="https://chat.whatsapp.com/AM6xpmBhQheEtnDoxf4jHA"><strong>Conca de Barberà</strong></a><br />
+                    <a href="https://chat.whatsapp.com/5QxpOdaTkzG7wTHbiWCuCP"><strong>Garraf</strong></a> ·<a href="https://chat.whatsapp.com/4BKSLcg720JHimOPO5jCti"><strong>Garrotxa</strong></a> · <a href="https://chat.whatsapp.com/CvidoCjh52bHXofJoKiJMf"><strong>Girona</strong></a><br />
+                    <a href="https://chat.whatsapp.com/Al2BRIoXosAL9CqC1iAFwF"><strong>Lleida-Segrià</strong></a><br />
+                    <a href="https://chat.whatsapp.com/20NAxgegixJ0FSqOI3oKW8"><strong>Maresme</strong></a> · <a href="https://chat.whatsapp.com/FVKr7LRNJHXC29pmBdILWo"><strong>Moianès</strong></a><br />
+                    <a href="https://chat.whatsapp.com/45teO56oHFHELFF9nNhoXC"><strong>La Noguera</strong></a><br />
+                    <a href="https://chat.whatsapp.com/K6vexPeYL2JFbZPWanpQyk"><strong>Osona</strong></a><br />
+                    <a href="https://chat.whatsapp.com/7GfRrWeUjeiC7bcxDKkNGP"><strong>País Valencià</strong></a><br />
+                    <a href="https://chat.whatsapp.com/C7IdUb4mIGS1HtoV6Y9T7A"><strong>Priorat</strong></a><br />
+                    <a href="https://chat.whatsapp.com/1VVgdBCxynNEsuYZS7zfnd"><strong>Segarra</strong></a> · <a href="https://chat.whatsapp.com/Al2BRIoXosAL9CqC1iAFwF"><strong>Segrià-Lleida</strong></a> · <strong><a href="https://chat.whatsapp.com/6Izhtt2VopaL5ZiD9unGt3">Solsonès</a><br />
+<a href="https://chat.whatsapp.com/A7brQZeA3jEBWVvL501L7s">Tarragonès</a></strong><br />
+                    <a href="https://chat.whatsapp.com/HugGnq6SoMz9iEuslb6XZM"><strong>Urgell</strong></a><br />
+                    <a href="https://chat.whatsapp.com/5xNdtKP54nrBx8wIsgFw1g"><strong>Vallès Occ - Rubí i Sant Cugat</strong></a> · <a href="https://chat.whatsapp.com/HQ7hLIcxozfGs2FRvkmK5V"><strong>Vallès Occ. - Sabadell i Terrassa</strong></a> · <a href="https://chat.whatsapp.com/4ptje2A5m7v2kOdpCctt6M"><strong>Vallès Oriental</strong></a></p>
+
+            </div>
+        </section>
+
+        <!-- About Me -->
+        <section id="manual" class="three">
+            <div class="container">
+
+                <header>
+                    <h2>Consells abans, durant i després del viatge</h2>
+                </header>
+                <p style="text-align:justify;">En sortir cap a Brussel·les ens exposem a nombrosos incidents que poden prevenir-se amb només prendre <strong>algunes precaucions abans, durant i després de tornar del viatge</strong>. El més important és informar-te bé i amb suficient antelació de tots els aspectes que, un cop allà, poden afectar a la teva salut o la seva seguretat.</p>
+                <h3>Abans de sortir.</h3>
+                <p style="text-align:justify;"><strong>Fes una visita al metge</strong>. En qualsevol cas, és sempre recomanable visitar al metge de capçalera abans de partir, sobretot si pateixes alguna malaltia crònica, per lleu que sigui. Ha de fer-te un informe al respecte que especifiqui la medicació que prens habitualment. Demana-li també que et faci receptes suficients per cobrir tot el temps que romanguis fora.
+
+                    <strong>Informa't sobre quina documentació sanitària necessites</strong>. Comprova amb la Seguretat Social si cal realitzar algun tipus de tràmit per assegurar-te l'atenció mèdica, en cas de requerir-la, allà on vagis i no oblidis mai agafar la targeta sanitària. Pots sol·licitar la<strong> targeta</strong>
+                    <strong> sanitària europea</strong> en les oficines de la Seguretat Social. Si ets soci d'alguna mútua, pregunteu-los què documentació hauries treure amb tu perquè t'atenguin arribat el moment estès on estès. D'altra banda si viatges en avió, pensa que quan es contracta un viatge, no surt massa car <strong>contractar també una assegurança mèdica</strong> que puede estalviar algun que altre disgust. Si el fas, informa't bé de que situacions cobreix i quins no.
+
+                    <strong>Altra documentació:</strong> passaport, carnet de conduir, DNI ... revisa la data de caducitat.
+
+                    <strong>Què has de portar a la teva farmaciola de viatger</strong>. Qualsevol farmaciola de viatge ha d'incloure sempre, com a mínim medicaments per tallar les dolències més freqüents (dolors diversos, diarrea, refredat, febre, marejos ...) i material per realitzar cures. Inclou también repel·lent d'insectes si el creguis necessari.
+
+                    <strong>Planifica bé l'equipatge</strong>: si viatgeu en família, és recomanable repartir el calçat, la roba i la de vestir entre elles, per si s'extravia una maleta, sempre tindràs una altra de la qual recórrer ben assortida. Per si tinguessis mala sort i s'extraviés tot el teu equipatge emporta't a la <strong>bossa de mà</strong> un petit <strong>"kit supervivència per a viatgers"</strong> muda, una jaqueta o dessuadora d'abric i alguns estris de neteja bàsics.
+
+                    <strong>Planifica bé la ruta a seguir:</strong> Si vas en cotxe assegura't de tenir ben planificada la ruta per la qual vas a circular. és convenient estudiar els punts de parada, gasolineres, àrees d'esbarjo, algunes direccions de tallers mecànics 24h ... etc. revisa la teva vehicle abans d'emprendre el viatge i porta en ell tot el que consideris necessari, roda de recanvi revisada, gat d'hissada, llanterna, reparador de punxades ... etc. Amb "Google Earth" <a href="https://www.google.es/intl/es/earth/index.html">https://www.google.es/intl/es/earth/index.html</a> podem planificar el viatge detalladament i exportar-amb format * kml. Assegura't que ho exportes amb aquest format perquè és la que podem utilitzar en l'aplicació per a mòbils "Maps.Me" <a href="https://play.google.com/store/apps/details?id=com.mapswithme.maps.pro&amp;hl=es">https://play.google.com/store/apps/details?id=com.mapswithme.maps.pro&amp;hl=es</a> Una aplicació gratuïta que treballa amb mapes off-line. Una altra de les aplicacions per a mòbil d'utilitat és <strong>CaraMaps i Alpify</strong>. La primera et dóna informació molt valuosa dels llocs per trobar les <strong>àrees d'autocaravanes</strong>, els <strong>càmpings</strong>, les <strong>àrees naturals</strong>, els <strong>aparcaments</strong>, les <strong>àrees de serveis</strong> que corresponen a les teves necessitats i gustos per al teu <strong>viatge en autocaravana o cotxe</strong>. La segona per deixar de patir quan els teus amics vagin sols de nit, <strong>podràs veure on són i demanar ajuda o anar a buscar-si passa alguna cosa. ¡També és molt útil per a trobar-vos i coordinar!</strong> Us dirà en quin lloc exacte us trobeu cada un que tingui l'aplicació al seu mòbil.
+                    <h3>Durant el viatge.</h3>
+                    <p style="text-align:justify;"><strong>Com evitar la síndrome del viatger</strong>: Aquest serà un viatge llarg (2600kmts.). L'escassa mobilitat a l'anar amb avió, o després de viatjar moltes hores en tren, autobús o cotxe impedeixen la correcta circulació, i acabem sentint-nos entumits i amb dolors musculars. Cal <strong>evitar portar roba ajustada i seure amb les cames creuades</strong>. A més convé <strong>realitzar exercicis amb els peus</strong> (moure'ls circularment cap endavant i cap enrere) durant el trajecte. Intenta no <strong>quedar-te molta estona en la mateixa postura</strong>. Si vas en avió o tren, cada dues hores dóna't un passeig pel passadís per estirar les cames. Si vas amb cotxe o autobús, <strong>aprofita totes les parades per caminar</strong>. Descansar suficientment. És millor descansar bé que accelerar la marxa per arribar com més aviat. Això últim pot provocar esdeveniments desagradables i inesperats que ens poden retardar la nostra marxa. <strong>La fórmula ha de ser poc a poc i sense presses.</strong> Si cal sortir amb suficient temps d'antelació. Considerar-unes vacances que comencen just en el moment de sortir. <strong>Gaudir del paisatge</strong>.
+                    </p>
+                    <h3>A Brussel·les.</h3>
+                    <p style="text-align:justify;">Hi ha diversos negocis que únicament accepten com a mitjà de pagament diners efectiu i targetes BELGUES anomenada Bancontact (anteriorment conegut com Bancontact / MrCash) que s'ha convertit en la primera elecció de mètode de pagament dels consumidors belgues. Els pagaments estan disponibles tant per a compres en botigues físiques com per a botigues en línia. Més del 80% de les botigues en línia belgues ofereixen Bancontact com a opció de pagament.
+
+                        <strong>Abans d'entrar a un negoci, per gran que sigui, assegurar que accepten el pagament amb Visa / Mastercard si es pretén pagar amb targeta</strong>. També és freqüent que en alguns negocis, especialment els més petits, apliquin un recàrrec pel pagament amb targeta, que pot oscil·lar entre 0.2 i 0.5 euros per transacció. És convenient llavors portar una mica de diners en efectiu guardat de forma segura repartint els diners entre amics o familiars <strong>amb la finalitat d'evitar que tot l'import depengui d'una mateixa persona.</strong> Hi ha aplicacions com "<strong>Twyp</strong>" que permeten pagaments entre amics de forma virtual i segura. Us podeu informar d'aquesta aplicació en: <a href="https://www.twyp.es/">https://www.twyp.es/</a>
+
+                        <strong>Vigila el que menges</strong>: Aliments en llocs de carrer, làctics sense garanties o productes alimentaris crus, no. Ni demanis cap tapa que no estigui protegida en una vitrina refrigerada. <strong>Menjar en restaurants sol ser car i el servei en moltes ocasions no és tan bo com el que esperaríem trobar al nostre país</strong>. Els restaurants pizzeria "italians" poden ser una bona opció per menjar per uns 15 € per persona. També són nombrosos els locals de menjar ràpid (patates fregides, salsitxes ...), són els anomenats <strong>"frituur"</strong>, molt econòmics encara que tot el que serveixen és menjar ràpid i fregida.
+
+                        <strong>Compte amb el que beus</strong>: No prenguis aigua de l'aixeta, no glaçons de gel sense conèixer la seva procedència. <strong>Beu aigua embotellada que hagi estat oberta en la teva presència</strong>. El te o altres infusions sí que pots prendre'ls amb tranquil·litat, ja que la seva aigua s'ha bullit. No t'oblidis de <strong>portar sempre</strong> una ampolla d'aigua al teu motxilla o bossa.
+
+                        <strong>S'hauria d'aprofitar per provar algunes dels centenars de cerveses que es fabriquen a Bèlgica</strong>. Hi ha molts llocs on prendre-les, per tant, es poden trobar amb molta facilitat i no solen ser cares. A més, sempre és pintoresc experimentar amb aquelles que es consideren més vistoses i estranyes.
+
+                        <strong>La xocolata Belga és molt famós per la seva qualitat i elaboració</strong>. No s'ha de deixar de visitar les innombrables botigues xocolateries que hi ha a tots els racons de Bèlgica. alguns xocolates de marques importants com GODIVA són més cars, però la seva elaboració bé mereix el preu que es paga.
+
+                        <strong>El transport ferroviari</strong>: És excel·lent, i és molt recomanable visitar Bruges (Brugge) o Anvers (Antwerpen / Anvers: <strong>15.20 anada i tornada</strong> €) Es pot consultar <a href="http://www.belgianrail.be">http://www.belgianrail.be</a> Aquest web pot informar dels horaris, els preus, durada del trajecte i <strong>tot el que es necessita per moure per tot el territori</strong>. També es pot utilitzar l'aplicació per a mòbils <strong>"SNC / NMBS"</strong> que compleix la mateixa funció.
+
+                        <strong>Climatologia</strong>: La pluja, i més en aquesta època de l'any és molt freqüent. Convé tenir a mà un paraigües o jaqueta impermeable amb caputxa i tot i que és evident, cal abrigar-se més del que ho fem aquí. Una de les aplicacions per a mòbil que ens mostra en temps real el que tenim en els nostres caps és <strong>"SAT 24"</strong> <a href="https://en.sat24">https://en.sat24</a>.com/en Es poden veure els núvols des de vista satèl·lit i és idònia per predir les pluges.
+
+                        <strong>De tornada a casa</strong>: Si cal repassa tot el que s'ha dit abans de tornar. Possiblement hàgim fet amics i vulguem compartir el viatge de tornada amb ells, això és perfecte. La companyia en aquest tipus de viatges és ideal per fomentar noves relacions republicanes. No us oblideu apuntar al vostre mòbil els números de telèfon que considereu oportuns i utilitzar Alpify per saber en quin lloc de la ruta us trobeu cadascun de vosaltres ... Per si us perdeu a la autopista. </p>
+
+                    <h3>BON VIATGE !</h3>
+                    <h4>Ens veiem a Brussel·les i ... VISCA LA REPUBLICA !!</h4>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="four">
+            <div class="container">
+
+                <header>
+                    <h2>Contactar</h2>
+                </header>
+
+                <a href="mailto:omplim.bxl@gmail.com">Email: omplim.bxl@gmail.com</a><br><br>
+
+                <a target="_blank" href="https://twitter.com/@OmplimBXLcotxes">Twitter: @OmplimBXLcotxes</a><br><br>
+
+                <a target="_blank" href="http://t.me/OmplimBXLcotxes">Telegram: t.me/OmplimBXLcotxes</a>
+
+                <!--<form method="post" action="#">
+                    <div class="row">
+                        <div class="6u 12u$(mobile)"><input type="text" name="name" placeholder="Name" /></div>
+                        <div class="6u$ 12u$(mobile)"><input type="text" name="email" placeholder="Email" /></div>
+                        <div class="12u$">
+                            <textarea name="message" placeholder="Message"></textarea>
+                        </div>
+                        <div class="12u$">
+                            <input type="submit" value="Send Message" />
+                        </div>
+                    </div>
+                </form>-->
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <div id="footer">
+
+        <!-- Copyright -->
+        <ul class="copyright">
+            <li>&copy; República Catalana</li>
+            <li>2017</li>
+        </ul>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.scrollzer.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
